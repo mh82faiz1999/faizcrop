@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#102c56">
+<meta name="description" content="FAIZCROP — India ke common identity, welfare, health, labour, farmer aur ration cards ke documents crop, size set aur print layout banane ka tool.">
+<title>FAIZCROP — Card Crop, PVC, Photo & PDF Tools</title>
+<style>
+:root{--navy:#102c56;--blue:#245fbd;--sky:#eaf2ff;--ink:#17253c;--muted:#64748b;--line:#dce5f1;--bg:#f4f7fc;--white:#fff;--green:#117c57;--amber:#fff6dc}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+button,input,select{font:inherit}button{cursor:pointer;border:0;border-radius:12px;padding:11px 15px;font-weight:750;background:var(--blue);color:white}button:disabled{opacity:.45;cursor:not-allowed}.secondary{background:var(--sky);color:var(--navy);border:1px solid #cbdcf8}.ghost{background:transparent;color:var(--navy);border:1px solid var(--line)}
+.topbar{background:var(--navy);color:#fff;padding:12px 4vw;display:flex;align-items:center;justify-content:space-between;gap:12px;position:sticky;top:0;z-index:10;box-shadow:0 5px 20px #0b22441a}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:1.1rem}.logo{height:38px;width:38px;border-radius:12px;background:linear-gradient(145deg,#8bb8ff,#fff);color:var(--navy);display:grid;place-items:center;font-weight:1000}.nav{display:flex;gap:8px;align-items:center}.nav a{color:#e6efff;text-decoration:none;font-size:.93rem;padding:9px}.nav button{padding:9px 12px}
+main{max-width:1180px;margin:auto;padding:22px 18px 60px}.hero{border-radius:26px;background:radial-gradient(circle at 90% 10%,#3f78c8 0,transparent 30%),linear-gradient(120deg,#102c56,#1d4d91);color:#fff;padding:34px;display:grid;grid-template-columns:1.4fr .8fr;gap:24px;align-items:center;box-shadow:0 15px 40px #102c5624}
+.eyebrow{text-transform:uppercase;letter-spacing:.12em;font-weight:800;color:#c9ddff;font-size:.78rem}.hero h1{font-size:clamp(2rem,4vw,3.35rem);line-height:1.06;margin:12px 0}.hero p{color:#e1eaff;line-height:1.65;max-width:650px}.hero .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}.hero .cta .secondary{background:#fff;color:var(--navy);border:0}.hero-card{background:#ffffff12;border:1px solid #ffffff38;border-radius:22px;padding:20px;backdrop-filter:blur(10px)}.hero-card .big{font-size:2.5rem;font-weight:900}.hero-card .mini{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:15px}.mini div{background:#ffffff12;border-radius:12px;padding:12px;font-size:.85rem}
+.trust{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0 28px}.trust div{background:white;border:1px solid var(--line);border-radius:15px;padding:15px;display:flex;gap:10px;align-items:center}.trust b{display:block}.trust span{font-size:.88rem;color:var(--muted)}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:15px;margin:30px 0 14px}.section-head h2{margin:0;font-size:1.55rem}.section-head p{margin:5px 0 0;color:var(--muted)}.searchrow{display:flex;gap:10px;flex-wrap:wrap;margin:15px 0}.searchrow input{flex:1;min-width:220px}.field{width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:12px;background:#fff;color:var(--ink)}.chips{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 18px}.chip{background:white;border:1px solid var(--line);color:#334155;border-radius:99px;padding:8px 12px;font-weight:650}.chip.active{background:var(--navy);color:white;border-color:var(--navy)}
+.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}.card{background:white;border:1px solid var(--line);border-radius:17px;padding:16px;display:flex;flex-direction:column;min-height:195px;transition:transform .15s,box-shadow .15s}.card:hover{transform:translateY(-2px);box-shadow:0 10px 25px #102c5610}.icon{width:43px;height:43px;border-radius:13px;display:grid;place-items:center;background:var(--sky);font-size:1.4rem}.card h3{margin:12px 0 6px;font-size:1.03rem}.card p{margin:0;color:var(--muted);font-size:.88rem;line-height:1.5;flex:1}.badge{display:inline-block;background:#f0fdf4;color:#166534;border-radius:7px;padding:4px 7px;font-size:.72rem;font-weight:800;margin-top:10px;align-self:flex-start}.card button{margin-top:12px;width:100%}
+.workspace{margin-top:30px;background:#fff;border:1px solid var(--line);border-radius:22px;padding:22px}.workgrid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.workbox{border:1px solid var(--line);border-radius:16px;padding:16px}.workbox h3{margin:0 0 12px}.label{display:block;font-weight:750;margin:12px 0 6px;font-size:.9rem}.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.notice{background:var(--amber);border:1px solid #efd990;border-radius:13px;padding:12px;color:#6b5213;font-size:.88rem;line-height:1.5;margin:12px 0}.previewWrap{background:#f0f3f8;border-radius:14px;overflow:hidden;display:flex;align-items:center;justify-content:center;min-height:250px}.previewWrap canvas{max-width:100%;height:auto;max-height:520px;touch-action:none}.previewWrap .placeholder{color:var(--muted);padding:30px;text-align:center}.buttons{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.stat{font-size:.88rem;color:var(--muted);margin-top:8px;line-height:1.45}.small{font-size:.82rem;color:var(--muted);line-height:1.5}
+footer{background:#0d2344;color:#d8e4fa;padding:30px 5vw;line-height:1.6}.footinner{max-width:1180px;margin:auto;display:grid;grid-template-columns:1.3fr 1fr;gap:25px}footer a{color:#fff}.modal{position:fixed;inset:0;background:#06152dcc;z-index:30;display:none;align-items:center;justify-content:center;padding:16px}.modal.show{display:flex}.modalbox{width:min(460px,100%);background:white;border-radius:22px;padding:24px;box-shadow:0 20px 70px #0004}.modalhead{display:flex;justify-content:space-between;align-items:center}.modalhead h2{margin:0}.close{background:#edf2f8;color:#263c5c;border-radius:50%;width:36px;height:36px;padding:0}.tabs{display:flex;gap:6px;background:#f0f4fa;border-radius:12px;padding:4px;margin:16px 0}.tabs button{flex:1;background:transparent;color:#52617a}.tabs button.active{background:white;color:var(--navy);box-shadow:0 1px 4px #102c5615}.modalbox .label{margin-top:13px}.modalbox button.full{width:100%;margin-top:16px}.auth-note{font-size:.82rem;color:var(--muted);line-height:1.5;margin-top:12px}.empty{grid-column:1/-1;text-align:center;background:white;border:1px dashed #cbd5e1;border-radius:16px;padding:30px;color:var(--muted)}
+@media(max-width:900px){.cards{grid-template-columns:repeat(3,minmax(0,1fr))}.hero{grid-template-columns:1fr}.hero-card{max-width:500px}.nav a{display:none}}
+@media(max-width:620px){main{padding:12px 11px 40px}.topbar{padding:10px 12px}.brand{font-size:.98rem}.nav button{font-size:.84rem}.hero{padding:23px 18px;border-radius:20px}.trust{grid-template-columns:1fr}.cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.card{padding:12px;min-height:205px}.card h3{font-size:.94rem}.card p{font-size:.81rem}.workgrid{grid-template-columns:1fr}.workspace{padding:13px}.section-head{display:block}.footinner{grid-template-columns:1fr}.hero-card .big{font-size:2rem}}
+@media(max-width:370px){.cards{grid-template-columns:1fr}.row{grid-template-columns:1fr}}
+@media print{body *{visibility:hidden!important}#printArea,#printArea *{visibility:visible!important}#printArea{position:absolute;inset:0;background:white}#printSheet{width:100%;height:auto}@page{margin:5mm}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><div class="logo">FC</div><span>FAIZCROP</span></div>
+  <nav class="nav"><a href="#cards">Card library</a><a href="#studio">Crop & Print</a><a href="#extraTools">Photo/PDF Tools</a><button id="loginTop">Login / Register</button></nav>
+</header>
+<main>
+<section class="hero">
+ <div><div class="eyebrow">Indian card crop & print workspace</div><h1>Cards crop karo.<br>Size set karo. Print karo.</h1>
+ <p>Identity, health, farmer, labour, ration aur welfare documents ke liye ek simple workspace. Mobile aur computer dono par use karne ke liye responsive design.</p>
+ <div class="cta"><button id="startBtn">Crop tool kholen ↓</button><button class="secondary" id="browseBtn">Saare card types dekhein</button></div></div>
+ <div class="hero-card"><div class="eyebrow">ONE WORKSPACE</div><div class="big">India Cards</div><div>Common document categories ek jagah</div><div class="mini"><div>📄 PDF & image</div><div>✂️ Crop tools</div><div>📐 Size settings</div><div>🖨️ Print sheet</div></div></div>
+</section>
+<div class="trust"><div><span>🔐</span><div><b>Local-first processing</b><span>Uploaded files browser mein process hote hain</span></div></div><div><span>📱</span><div><b>Mobile + desktop</b><span>Responsive layout</span></div></div><div><span>⚠️</span><div><b>Size verify karein</b><span>Official dimensions har card ke liye same nahi</span></div></div></div>
+
+<section id="cards">
+ <div class="section-head"><div><h2>Card library</h2><p>Common card/document types browse karein. Search se filter kar sakte hain.</p></div></div>
+ <div class="searchrow"><input class="field" id="search" placeholder="Search: Aadhaar, ration, farmer, health..."><button class="secondary" id="clearSearch">Clear</button></div>
+ <div class="chips" id="filters"></div>
+ <div class="cards" id="cardGrid"></div>
+ <p class="small">Note: India mein card, certificate, passbook aur scheme-document ki koi ek complete fixed list nahi hai; schemes aur state documents badalte rehte hain. Yeh common categories ka starter catalogue hai, exhaustive/official government directory nahi.</p>
+</section>
+
+
+<section class="workspace" id="extraTools">
+ <div class="section-head"><div><h2>Photo & PDF Tools</h2><p>Photo resize, 2-photo merge aur PDF page size adjust karne ke tools.</p></div></div>
+ <div class="workgrid">
+  <div class="workbox">
+   <h3>Photo resize</h3>
+   <label class="label" for="photoFile">Photo upload karein</label><input class="field" id="photoFile" type="file" accept="image/*">
+   <div class="row"><div><label class="label" for="photoPreset">Preset</label><select class="field" id="photoPreset"><option value="35,45">Passport photo — 35×45 mm (common)</option><option value="25,35">Small ID photo — 25×35 mm</option><option value="custom">Custom pixels</option></select></div><div><label class="label" for="photoDpi">DPI</label><select class="field" id="photoDpi"><option>300</option><option>200</option><option>150</option></select></div></div>
+   <div class="row"><div><label class="label" for="photoW">Width (px)</label><input class="field" id="photoW" type="number" value="413" min="1" max="10000"></div><div><label class="label" for="photoH">Height (px)</label><input class="field" id="photoH" type="number" value="531" min="1" max="10000"></div></div>
+   <div class="buttons"><button id="resizePhoto" disabled>Resize photo</button><button id="downloadPhoto" class="secondary" disabled>Download</button></div>
+   <div class="previewWrap"><canvas id="photoPreview" width="413" height="531" style="width:100%;max-height:300px;object-fit:contain"></canvas></div>
+   <p class="small">Passport photo requirements authority ke hisaab se vary kar sakte hain. Required crop, background aur dimensions pehle check karein.</p>
+  </div>
+  <div class="workbox">
+   <h3>Photo merge</h3>
+   <label class="label" for="mergeA">Photo 1</label><input class="field" id="mergeA" type="file" accept="image/*">
+   <label class="label" for="mergeB">Photo 2</label><input class="field" id="mergeB" type="file" accept="image/*">
+   <label class="label" for="mergeLayout">Layout</label><select class="field" id="mergeLayout"><option value="side">Side by side</option><option value="vertical">Top and bottom</option></select>
+   <div class="buttons"><button id="mergeBtn" disabled>Merge photos</button><button id="mergeDownload" class="secondary" disabled>Download merged</button></div>
+   <div class="previewWrap"><canvas id="mergePreview" width="800" height="500" style="width:100%"></canvas></div>
+   <p class="small">Yeh basic merge tool hai; face ko automatically alter nahi karta.</p>
+  </div>
+  <div class="workbox">
+   <h3>PDF page resize</h3>
+   <label class="label" for="pdfResizeFile">PDF upload</label><input class="field" id="pdfResizeFile" type="file" accept="application/pdf,.pdf">
+   <label class="label" for="pdfSize">Target page size</label><select class="field" id="pdfSize"><option value="a4">A4 (210 × 297 mm)</option><option value="letter">Letter (216 × 279 mm)</option><option value="a5">A5 (148 × 210 mm)</option></select>
+   <div class="buttons"><button id="resizePdf" disabled>Resize PDF</button></div>
+   <p class="small" id="pdfResizeStatus">PDF resize ke liye browser mein PDF library load hoti hai. File kisi server par upload nahi ki jaati. Result ko print karne se pehle verify karein.</p>
+  </div>
+  <div class="workbox">
+   <h3>PVC card print preset</h3>
+   <p>Standard CR80 / ID-1 PVC card ka nominal size <b>85.60 × 53.98 mm</b> hota hai. Har scheme/card ka design, crop aur legal issuance rules alag ho sakte hain.</p>
+   <div class="buttons"><button id="pvcPreset">Use PVC / CR80 size</button><button class="secondary" id="pvcPrintHint">Print checklist</button></div>
+   <div class="notice" id="pvcHint" hidden>Printer dialog mein 100% / Actual size select karein. Printer margins, scaling aur lamination pouch ki wajah se size badal sakta hai. Pehle test print aur ruler se measurement karein. Official card ko recreate/alter karke misleading document na banayein.</div>
+  </div>
+ </div>
+</section>
+
+<section class="workspace" id="studio">
+ <div class="section-head"><div><h2>Crop & print studio</h2><p>Image upload karein, card area select karein aur print layout banayein.</p></div></div>
+ <div class="workgrid">
+  <div class="workbox">
+   <h3>1. File aur size</h3>
+   <label class="label" for="file">Image ya PDF upload</label><input class="field" type="file" id="file" accept="image/*,.pdf,application/pdf">
+   <label class="label" for="pdfPassword">Protected PDF password (agar maange)</label><input class="field" id="pdfPassword" type="password" autocomplete="off" placeholder="PDF ka password yahan daalein">
+   <div class="buttons"><button id="openFileBtn" class="secondary" type="button">Open PDF / Retry</button></div>
+   <p class="small">Password sirf iss browser mein PDF kholne ke liye hai. Kisi aur ka document ho to permission lein. Password save nahi hota.</p>
+   <label class="label" for="cardPreset">Card size preset</label><select class="field" id="cardPreset">
+    <option value="85.6,54">Aadhaar / PAN / common ID card — 85.6 × 54 mm (verify)</option>
+    <option value="custom">Custom / document ke mutabiq</option>
+    <option value="100,70">Custom example — 100 × 70 mm</option>
+   </select>
+   <div class="row"><div><label class="label" for="cw">Width (mm)</label><input class="field" id="cw" type="number" min="10" max="300" step=".1" value="85.6"></div><div><label class="label" for="ch">Height (mm)</label><input class="field" id="ch" type="number" min="10" max="300" step=".1" value="54"></div></div>
+   <div class="buttons"><button id="autoCrop" disabled>Try auto-detect</button><button class="secondary" id="resetCrop" disabled>Reset area</button></div>
+   <div class="notice">Sensitive documents sirf permission ke saath handle karein. Yeh starter demo government portal nahi hai, aur kisi card ko issue/verify nahi karta. Crop/print se pehle card ki readability aur dimensions check karein.</div>
+   <p class="small">PDF reading ke liye browser PDF library internet se load hoti hai. Image processing browser mein hoti hai; PDF library CDN se load hona file upload karne ke barabar nahi hai.</p>
+  </div>
+  <div class="workbox">
+   <h3>2. Crop area select karein</h3>
+   <div class="previewWrap" id="sourceWrap"><div class="placeholder">Upload ke baad document yahan dikhega.<br>Mouse/finger se card ke around rectangle draw karein.</div><canvas id="source" hidden></canvas></div>
+   <div id="pdfPagesWrap" hidden><label class="label" for="pdfPage">PDF page</label><select class="field" id="pdfPage"></select></div>
+   <div class="buttons"><button id="applyCrop" disabled>Apply crop</button><button class="secondary" id="downloadPng" disabled>PNG download</button></div>
+   <div class="stat" id="status">Abhi koi file upload nahi hui.</div>
+  </div>
+  <div class="workbox">
+   <h3>3. Print sheet</h3>
+   <div class="row"><div><label class="label" for="paper">Paper</label><select class="field" id="paper"><option value="a4">A4</option><option value="4x6">4 × 6 inch</option></select></div><div><label class="label" for="copies">Copies</label><select class="field" id="copies"><option>1</option><option>4</option><option selected>8</option><option>10</option><option>12</option></select></div></div>
+   <div class="buttons"><button id="makeSheet" disabled>Build print sheet</button><button id="printBtn" class="secondary" disabled>Print</button></div><div id="sheetInfo" class="stat"></div>
+  </div>
+  <div class="workbox">
+   <h3>4. Cropped preview</h3><div class="previewWrap"><canvas id="preview" width="856" height="540" style="width:100%"></canvas></div><p class="small">Printer scaling aur margins se actual dimensions badal sakte hain. Print dialog mein “Actual size / 100%” use karein aur pehle ruler se test print verify karein.</p>
+  </div>
+ </div>
+ <div id="printArea" hidden><canvas id="printSheet"></canvas></div>
+</section>
+</main>
+<footer><div class="footinner"><div><h2>FAIZCROP</h2><p>Ek independent crop & print helper prototype. Government se affiliated nahi hai aur government cards issue, verify ya renew nahi karta.</p></div><div><b>Important</b><p>Card names/categories sirf navigation ke liye hain. Eligibility, application, renewal aur official downloads ke liye sambandhit official government portal ka hi use karein. Password ya OTP kisi ke saath share na karein. Protected PDF ka password sirf document owner/authorized user se lein.</p><p>© 2026 FAIZCROP • Prototype</p></div></div></footer>
+
+<div class="modal" id="authModal" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+ <div class="modalbox"><div class="modalhead"><h2 id="authTitle">Welcome</h2><button class="close" id="closeModal" aria-label="Close">×</button></div>
+ <div class="tabs"><button class="active" id="tabLogin">Login</button><button id="tabRegister">Register</button></div>
+ <form id="authForm"><label class="label" for="phone">Mobile number</label><input class="field" id="phone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="10-digit mobile number" pattern="[6-9][0-9]{9}" required>
+ <label class="label" for="password">Password</label><input class="field" id="password" type="password" autocomplete="current-password" minlength="8" placeholder="At least 8 characters" required>
+ <button class="full" type="submit" id="authSubmit">Login</button></form>
+ <p class="auth-note" id="authMsg">Prototype only: is demo mein real account create ya login nahi hota. Real phone login ke liye secure backend, OTP verification, password hashing, rate limits aur privacy policy implement karna zaroori hai.</p>
+ </div>
+</div>
+<script>
+const cards=[
+['Aadhaar Card','Identity','🪪','Aadhaar identity document. Official download/update UIDAI portal se karein.','85.6,54'],
+['PAN Card','Identity','💳','Tax identity card; official PAN service provider ka use karein.','85.6,54'],
+['Voter ID / EPIC','Identity','🗳️','Elector photo identity card.','85.6,54'],
+['Passport','Identity','🌍','Passport booklet/photo page; size ko card preset na samjhein.','custom'],
+['Driving Licence','Transport','🚘','Driving licence; state/RTO format alag ho sakta hai.','85.6,54'],
+['RC / Vehicle Registration','Transport','🚗','Vehicle registration certificate/card.','custom'],
+['Ayushman Bharat / PM-JAY','Health','🏥','Health scheme beneficiary card; eligibility/state workflow verify karein.','custom'],
+['ABHA Health ID','Health','🩺','ABHA health account/ID.','custom'],
+['e-Shram Card','Labour','🦺','Unorganised worker registration card.','custom'],
+['Labour / BOCW Card','Labour','👷','Construction worker welfare board card; state rules differ.','custom'],
+['ESIC Card','Health','⚕️','Employee State Insurance related card/document.','custom'],
+['UAN / EPFO Member Card','Labour','🏭','EPFO/UAN related document; often online account details.','custom'],
+['Ration Card','Ration & Family','🌾','State ration card; page/card format varies by state.','custom'],
+['Family ID / Parivar Pehchan','Ration & Family','👨‍👩‍👧','State-specific family identity/beneficiary document.','custom'],
+['Samagra ID','Ration & Family','🏡','Madhya Pradesh state family/member ID.','custom'],
+['MahaDBT / Scheme Beneficiary','Welfare','📑','Application/beneficiary printout; not one universal card.','custom'],
+['MahaSarathi / Transport Service','Transport','🛣️','Transport service document; identify exact document before sizing.','custom'],
+['Kisan Credit Card (KCC)','Farmer','🚜','Bank-issued agricultural credit card; bank format varies.','85.6,54'],
+['Farmer ID / AgriStack','Farmer','🌱','Farmer registry ID; state and rollout may vary.','custom'],
+['PM-KISAN Beneficiary Print','Farmer','🌾','Scheme beneficiary details/printout, not a universal card.','custom'],
+['Soil Health Card','Farmer','🧪','Agriculture soil health report/card, commonly page-sized.','custom'],
+['Fertiliser / Cooperative Member Card','Farmer','🌿','Local/state cooperative or input account card.','custom'],
+['Student ID Card','Education','🎓','School/college-issued student identity card.','85.6,54'],
+['Scholarship / MahaDBT Print','Education','📚','Scholarship application or status printout.','custom'],
+['Disability UDID Card','Welfare','♿','Unique Disability ID; official portal for issuance/details.','85.6,54'],
+['Senior Citizen Card','Welfare','🧓','State/local scheme card; formats vary.','custom'],
+['Pension / Beneficiary ID','Welfare','🤝','Pension or welfare beneficiary document; scheme-specific.','custom'],
+['Caste Certificate','Certificates','📜','Certificate/document, usually not a standard card.','custom'],
+['Income Certificate','Certificates','🧾','Certificate document; preserve original page dimensions.','custom'],
+['Domicile / Residence Certificate','Certificates','🏠','State-issued certificate document.','custom'],
+['Birth Certificate','Certificates','👶','Civil registration certificate, often page-sized.','custom'],
+['Death Certificate','Certificates','🕊️','Civil registration certificate, often page-sized.','custom'],
+['Marriage Certificate','Certificates','💍','Marriage registration certificate; page dimensions vary.','custom'],
+['Migrant / Worker Registration','Labour','🧳','State/program-specific worker document.','custom'],
+['Police / Department ID','Identity','🛡️','Department-issued ID; handle only with authorisation.','custom'],
+['Bank / ATM Card','Finance','🏦','Bank-issued payment card; avoid uploading sensitive card data.','85.6,54'],
+['Health Insurance Card','Health','🩹','Insurer or scheme card; format varies.','custom'],
+['Other State Scheme Card','Other','🗂️','State-specific scheme card or beneficiary document.','custom'],
+['Custom document','Other','➕','Any other permitted document image/PDF.','custom']
+];
+const categories=['All','Identity','Health','Labour','Ration & Family','Farmer','Transport','Education','Welfare','Certificates','Finance','Other'];
+let activeCategory='All';
+const grid=document.getElementById('cardGrid'), filters=document.getElementById('filters'), search=document.getElementById('search');
+function drawFilters(){filters.innerHTML='';categories.forEach(cat=>{const b=document.createElement('button');b.className='chip'+(activeCategory===cat?' active':'');b.textContent=cat;b.onclick=()=>{activeCategory=cat;drawFilters();drawCards()};filters.appendChild(b)})}
+function drawCards(){const q=search.value.trim().toLowerCase();const found=cards.filter(c=>(activeCategory==='All'||c[1]===activeCategory)&&c.slice(0,4).join(' ').toLowerCase().includes(q));grid.innerHTML='';if(!found.length){grid.innerHTML='<div class="empty">Koi match nahi mila. Doosra keyword try karein.</div>';return}
+found.forEach(c=>{const el=document.createElement('article');el.className='card';el.innerHTML=`<div class="icon">${c[2]}</div><h3>${c[0]}</h3><p>${c[3]}</p><span class="badge">${c[1]}</span><button class="secondary">Crop this document</button>`;el.querySelector('button').onclick=()=>{document.getElementById('studio').scrollIntoView({behavior:'smooth'});if(c[4]!=='custom'){const [w,h]=c[4].split(',');document.getElementById('cw').value=w;document.getElementById('ch').value=h;document.getElementById('cardPreset').value=c[4]}else{document.getElementById('cardPreset').value='custom'}document.getElementById('file').focus()};grid.appendChild(el)})}
+drawFilters();drawCards();search.addEventListener('input',drawCards);document.getElementById('clearSearch').onclick=()=>{search.value='';activeCategory='All';drawFilters();drawCards()};document.getElementById('browseBtn').onclick=()=>document.getElementById('cards').scrollIntoView({behavior:'smooth'});document.getElementById('startBtn').onclick=()=>document.getElementById('studio').scrollIntoView({behavior:'smooth'});
+const modal=document.getElementById('authModal');let authMode='login';function openModal(){modal.classList.add('show')}function closeModal(){modal.classList.remove('show')}document.getElementById('loginTop').onclick=openModal;document.getElementById('closeModal').onclick=closeModal;modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});
+function setMode(m){authMode=m;document.getElementById('tabLogin').classList.toggle('active',m==='login');document.getElementById('tabRegister').classList.toggle('active',m==='register');document.getElementById('authSubmit').textContent=m==='login'?'Login':'Register';document.getElementById('authTitle').textContent=m==='login'?'Welcome back':'Create an account';document.getElementById('password').autocomplete=m==='login'?'current-password':'new-password';document.getElementById('authMsg').textContent='Prototype only: is demo mein real account create ya login nahi hota. Real phone login ke liye secure backend, OTP verification, password hashing, rate limits aur privacy policy implement karna zaroori hai.'}
+document.getElementById('tabLogin').onclick=()=>setMode('login');document.getElementById('tabRegister').onclick=()=>setMode('register');document.getElementById('authForm').onsubmit=e=>{e.preventDefault();document.getElementById('authMsg').textContent='Yeh front-end demo hai: account save nahi hua. Live registration ke liye backend/OTP service connect karni hogi.'};
+const src=document.getElementById('source'), sctx=src.getContext('2d'), prev=document.getElementById('preview'), pctx=prev.getContext('2d');
+let imgCanvas=null,crop=null,dragging=false,start=null,pdfDoc=null;
+function status(t){document.getElementById('status').textContent=t}
+function showImage(canvas){imgCanvas=canvas;src.width=canvas.width;src.height=canvas.height;src.hidden=false;document.getElementById('sourceWrap').querySelector('.placeholder')?.remove();crop={x:0,y:0,w:src.width,h:src.height};drawSource();document.getElementById('autoCrop').disabled=false;document.getElementById('resetCrop').disabled=false;document.getElementById('applyCrop').disabled=false;renderPreview();status('File loaded. Rectangle draw karein ya auto-detect try karein.')}
+function drawSource(){if(!imgCanvas)return;sctx.clearRect(0,0,src.width,src.height);sctx.drawImage(imgCanvas,0,0);if(crop){sctx.save();sctx.fillStyle='rgba(7,25,50,.34)';sctx.fillRect(0,0,src.width,src.height);sctx.clearRect(crop.x,crop.y,crop.w,crop.h);sctx.drawImage(imgCanvas,crop.x,crop.y,crop.w,crop.h,crop.x,crop.y,crop.w,crop.h);sctx.strokeStyle='#ffce3b';sctx.lineWidth=Math.max(2,src.width/400);sctx.strokeRect(crop.x,crop.y,crop.w,crop.h);sctx.restore()}}
+function renderPreview(){if(!imgCanvas||!crop)return;prev.width=Math.max(1,Math.round(crop.w));prev.height=Math.max(1,Math.round(crop.h));pctx.drawImage(imgCanvas,crop.x,crop.y,crop.w,crop.h,0,0,prev.width,prev.height);document.getElementById('downloadPng').disabled=false;document.getElementById('makeSheet').disabled=false}
+src.addEventListener('pointerdown',e=>{if(!imgCanvas)return;src.setPointerCapture(e.pointerId);const r=src.getBoundingClientRect();start={x:(e.clientX-r.left)*src.width/r.width,y:(e.clientY-r.top)*src.height/r.height};dragging=true;crop={x:start.x,y:start.y,w:0,h:0}});
+src.addEventListener('pointermove',e=>{if(!dragging)return;const r=src.getBoundingClientRect(),x=Math.max(0,Math.min(src.width,(e.clientX-r.left)*src.width/r.width)),y=Math.max(0,Math.min(src.height,(e.clientY-r.top)*src.height/r.height));crop={x:Math.min(start.x,x),y:Math.min(start.y,y),w:Math.abs(x-start.x),h:Math.abs(y-start.y)};drawSource()});
+src.addEventListener('pointerup',()=>{if(!dragging)return;dragging=false;if(crop.w<5||crop.h<5)crop={x:0,y:0,w:src.width,h:src.height};drawSource();renderPreview()});
+let selectedCropFile=null;
+async function loadCropFile(){const f=selectedCropFile||document.getElementById('file').files[0];if(!f)return;selectedCropFile=f;pdfDoc=null;status('File load ho rahi hai…');try{if(f.type==='application/pdf'||f.name.toLowerCase().endsWith('.pdf')){if(!window.pdfjsLib)await new Promise((res,rej)=>{const sc=document.createElement('script');sc.src='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js';sc.onload=res;sc.onerror=()=>rej(Error('PDF library load nahi hui; internet check karein.'));document.head.appendChild(sc)});pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';const bytes=await f.arrayBuffer(),pwd=document.getElementById('pdfPassword').value;pdfDoc=await pdfjsLib.getDocument({data:bytes,password:pwd||undefined}).promise;const sel=document.getElementById('pdfPage');sel.innerHTML='';for(let i=1;i<=pdfDoc.numPages;i++){const o=document.createElement('option');o.value=i;o.textContent='Page '+i;sel.appendChild(o)}document.getElementById('pdfPagesWrap').hidden=false;sel.onchange=renderPdf;await renderPdf();status('PDF khul gayi. Page select karke crop karein.')}else{const url=URL.createObjectURL(f),im=new Image();im.onload=()=>{const max=1500,k=Math.min(1,max/Math.max(im.naturalWidth,im.naturalHeight)),c=document.createElement('canvas');c.width=Math.round(im.naturalWidth*k);c.height=Math.round(im.naturalHeight*k);c.getContext('2d').drawImage(im,0,0,c.width,c.height);showImage(c);URL.revokeObjectURL(url)};im.onerror=()=>status('Image open nahi hui. Doosri file try karein.');im.src=url}}catch(err){const msg=String(err?.message||err||'');if(/password|encrypted|PasswordException/i.test(msg)){status('Yeh PDF password-protected hai ya password galat hai. Password enter karke “Open PDF / Retry” dabayein.')}else{status(msg||'File open nahi hui.')}}}
+document.getElementById('file').addEventListener('change',e=>{selectedCropFile=e.target.files[0]||null;document.getElementById('pdfPassword').value='';if(selectedCropFile)loadCropFile()});
+document.getElementById('openFileBtn').addEventListener('click',loadCropFile);
+async function renderPdf(){if(!pdfDoc)return;const page=await pdfDoc.getPage(Number(document.getElementById('pdfPage').value||1)),v=page.getViewport({scale:1.4}),c=document.createElement('canvas');c.width=v.width;c.height=v.height;await page.render({canvasContext:c.getContext('2d'),viewport:v}).promise;showImage(c)}
+document.getElementById('cardPreset').onchange=e=>{if(e.target.value==='custom')return;const [w,h]=e.target.value.split(',');document.getElementById('cw').value=w;document.getElementById('ch').value=h};
+document.getElementById('resetCrop').onclick=()=>{if(!imgCanvas)return;crop={x:0,y:0,w:src.width,h:src.height};drawSource();renderPreview();status('Crop reset ho gaya.')};
+document.getElementById('autoCrop').onclick=()=>{if(!imgCanvas)return;const w=imgCanvas.width,h=imgCanvas.height,ctx=imgCanvas.getContext('2d'),d=ctx.getImageData(0,0,w,h).data;const px=(x,y)=>{let i=(Math.max(0,Math.min(h-1,y))*w+Math.max(0,Math.min(w-1,x)))*4;return[d[i],d[i+1],d[i+2]]};const cs=[px(2,2),px(w-3,2),px(2,h-3),px(w-3,h-3)],bg=cs.reduce((a,c)=>a.map((v,i)=>v+c[i]/4),[0,0,0]);let minX=w,minY=h,maxX=0,maxY=0,n=0,step=Math.max(1,Math.floor(Math.max(w,h)/600));for(let y=0;y<h;y+=step)for(let x=0;x<w;x+=step){const c=px(x,y),dist=Math.sqrt(c.reduce((s,v,i)=>s+(v-bg[i])**2,0));if(dist>48){minX=Math.min(minX,x);minY=Math.min(minY,y);maxX=Math.max(maxX,x);maxY=Math.max(maxY,y);n++}}if(n<30||maxX-minX<w*.12||maxY-minY<h*.08){status('Auto-detect confident nahi hai. Finger/mouse se card ke around crop rectangle draw karein.');return}const pad=3;crop={x:Math.max(0,minX-pad),y:Math.max(0,minY-pad),w:Math.min(w,maxX+pad)-Math.max(0,minX-pad),h:Math.min(h,maxY+pad)-Math.max(0,minY-pad)};drawSource();renderPreview();status('Possible edges mil gaye. Crop area check karein; auto-detection guaranteed nahi.')};
+document.getElementById('applyCrop').onclick=()=>{if(!imgCanvas||!crop)return;const c=document.createElement('canvas');c.width=Math.max(1,Math.round(crop.w));c.height=Math.max(1,Math.round(crop.h));c.getContext('2d').drawImage(imgCanvas,crop.x,crop.y,crop.w,crop.h,0,0,c.width,c.height);imgCanvas=c;src.width=c.width;src.height=c.height;crop={x:0,y:0,w:c.width,h:c.height};drawSource();renderPreview();status('Crop apply ho gaya. PNG download ya print sheet banayein.')};
+document.getElementById('downloadPng').onclick=()=>{const a=document.createElement('a');a.download='faizcrop-card.png';a.href=prev.toDataURL('image/png');a.click()};
+document.getElementById('makeSheet').onclick=()=>{if(!prev.width||!prev.height)return;const a4=document.getElementById('paper').value==='a4',pw=a4?210:152.4,ph=a4?297:101.6,scale=3.77952756,sheet=document.getElementById('printSheet');sheet.width=Math.round(pw*scale);sheet.height=Math.round(ph*scale);const c=sheet.getContext('2d');c.fillStyle='#fff';c.fillRect(0,0,sheet.width,sheet.height);const cw=(Number(document.getElementById('cw').value)||85.6)*scale,ch=(Number(document.getElementById('ch').value)||54)*scale,gap=3*scale,cols=Math.max(1,Math.floor((sheet.width-24)/cw)),rows=Math.max(1,Math.floor((sheet.height-24)/ch)),max=Math.min(Number(document.getElementById('copies').value),cols*rows);for(let i=0;i<max;i++){const x=12+(i%cols)*(cw+gap),y=12+Math.floor(i/cols)*(ch+gap);if(x+cw<sheet.width&&y+ch<sheet.height){c.drawImage(prev,x,y,cw,ch);c.strokeStyle='#ccc';c.strokeRect(x,y,cw,ch)}}document.getElementById('printArea').hidden=false;document.getElementById('sheetInfo').textContent=`${max} card(s) placed. Nominal size: ${document.getElementById('cw').value} × ${document.getElementById('ch').value} mm. Printer scaling se size vary ho sakta hai.`;document.getElementById('printBtn').disabled=false};
+document.getElementById('printBtn').onclick=()=>window.print();
+
+// Photo resize tool
+let photoImage=null, mergeImageA=null, mergeImageB=null;
+function loadImageFile(file, callback){if(!file)return;const url=URL.createObjectURL(file),im=new Image();im.onload=()=>{callback(im);URL.revokeObjectURL(url)};im.onerror=()=>alert('Image open nahi hui.');im.src=url}
+const photoFile=document.getElementById('photoFile'),photoPreview=document.getElementById('photoPreview');
+photoFile.addEventListener('change',e=>loadImageFile(e.target.files[0],im=>{photoImage=im;document.getElementById('resizePhoto').disabled=false;const k=Math.min(1,1200/Math.max(im.naturalWidth,im.naturalHeight));photoPreview.width=Math.round(im.naturalWidth*k);photoPreview.height=Math.round(im.naturalHeight*k);photoPreview.getContext('2d').drawImage(im,0,0,photoPreview.width,photoPreview.height)}));
+document.getElementById('photoPreset').onchange=e=>{const v=e.target.value;if(v==='custom')return;const [w,h]=v.split(',').map(Number),dpi=Number(document.getElementById('photoDpi').value);document.getElementById('photoW').value=Math.round(w/25.4*dpi);document.getElementById('photoH').value=Math.round(h/25.4*dpi)};
+document.getElementById('photoDpi').onchange=()=>document.getElementById('photoPreset').dispatchEvent(new Event('change'));
+document.getElementById('resizePhoto').onclick=()=>{if(!photoImage)return;const w=Math.max(1,Math.min(10000,Number(document.getElementById('photoW').value)||413)),h=Math.max(1,Math.min(10000,Number(document.getElementById('photoH').value)||531));photoPreview.width=w;photoPreview.height=h;photoPreview.getContext('2d').clearRect(0,0,w,h);photoPreview.getContext('2d').drawImage(photoImage,0,0,w,h);document.getElementById('downloadPhoto').disabled=false};
+document.getElementById('downloadPhoto').onclick=()=>{const a=document.createElement('a');a.download='faizcrop-resized-photo.png';a.href=photoPreview.toDataURL('image/png');a.click()};
+// Photo merge
+const mergePreview=document.getElementById('mergePreview');
+document.getElementById('mergeA').onchange=e=>loadImageFile(e.target.files[0],im=>{mergeImageA=im;checkMerge()});
+document.getElementById('mergeB').onchange=e=>loadImageFile(e.target.files[0],im=>{mergeImageB=im;checkMerge()});
+function checkMerge(){document.getElementById('mergeBtn').disabled=!(mergeImageA&&mergeImageB)}
+document.getElementById('mergeBtn').onclick=()=>{if(!mergeImageA||!mergeImageB)return;const side=document.getElementById('mergeLayout').value==='side',w=800,h=500;mergePreview.width=w;mergePreview.height=h;const c=mergePreview.getContext('2d');c.fillStyle='#fff';c.fillRect(0,0,w,h);if(side){const half=w/2;drawContain(c,mergeImageA,0,0,half,h);drawContain(c,mergeImageB,half,0,half,h)}else{const half=h/2;drawContain(c,mergeImageA,0,0,w,half);drawContain(c,mergeImageB,0,half,w,half)}document.getElementById('mergeDownload').disabled=false};
+function drawContain(c,im,x,y,w,h){const k=Math.min(w/im.naturalWidth,h/im.naturalHeight),dw=im.naturalWidth*k,dh=im.naturalHeight*k;c.drawImage(im,x+(w-dw)/2,y+(h-dh)/2,dw,dh)}
+document.getElementById('mergeDownload').onclick=()=>{const a=document.createElement('a');a.download='faizcrop-merged-photos.png';a.href=mergePreview.toDataURL('image/png');a.click()};
+// PVC preset and hint
+document.getElementById('pvcPreset').onclick=()=>{document.getElementById('cw').value='85.6';document.getElementById('ch').value='53.98';document.getElementById('cardPreset').value='custom';document.getElementById('studio').scrollIntoView({behavior:'smooth'})};
+document.getElementById('pvcPrintHint').onclick=()=>{const el=document.getElementById('pvcHint');el.hidden=!el.hidden};
+// PDF page resize using pdf-lib CDN; preserves page contents by scaling onto new page
+document.getElementById('pdfResizeFile').onchange=e=>{document.getElementById('resizePdf').disabled=!e.target.files[0];document.getElementById('pdfResizeStatus').textContent=e.target.files[0]?'PDF selected. Click Resize PDF.':'PDF resize ke liye PDF upload karein.'};
+document.getElementById('resizePdf').onclick=async()=>{const file=document.getElementById('pdfResizeFile').files[0];if(!file)return;const statusEl=document.getElementById('pdfResizeStatus');try{statusEl.textContent='PDF library load ho rahi hai…';if(!window.PDFLib)await new Promise((res,rej)=>{const s=document.createElement('script');s.src='https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js';s.onload=res;s.onerror=()=>rej(Error('PDF library load nahi hui. Internet check karein.'));document.head.appendChild(s)});const {PDFDocument}=PDFLib,srcDoc=await PDFDocument.load(await file.arrayBuffer()),out=await PDFDocument.create();const size=document.getElementById('pdfSize').value;let w=595.276,h=841.89;if(size==='letter'){w=612;h=792}else if(size==='a5'){w=419.528;h=595.276}for(const page of srcDoc.getPages()){const [embedded]=await out.embedPages([page]);const np=out.addPage([w,h]);const scale=Math.min(w/embedded.width,h/embedded.height);np.drawPage(embedded,{x:(w-embedded.width*scale)/2,y:(h-embedded.height*scale)/2,width:embedded.width*scale,height:embedded.height*scale})}const bytes=await out.save(),blob=new Blob([bytes],{type:'application/pdf'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='faizcrop-resized.pdf';a.click();URL.revokeObjectURL(url);statusEl.textContent='Resized PDF download ho gayi. Printing se pehle page content aur scale check karein.'}catch(err){statusEl.textContent=err.message||'PDF resize nahi ho payi.'}};
+
+</script>
+</body>
+</html>
